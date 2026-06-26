@@ -1347,6 +1347,33 @@
     opacity:0.85;
     margin: 0 0 1.2rem;
   }
+  .companions-notice{
+    display:flex;
+    align-items:flex-start;
+    gap: 0.6rem;
+    background: rgba(192,70,63,0.07);
+    border: 1px solid rgba(192,70,63,0.25);
+    border-radius: 12px;
+    padding: 0.7rem 0.85rem;
+    margin: 0 0 1.2rem;
+  }
+  .companions-notice svg{
+    width: 18px; height:18px;
+    color: #a8392f;
+    flex-shrink:0;
+    margin-top: 0.1rem;
+  }
+  .companions-notice p{
+    font-family: var(--serif-body);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--brown-dark);
+    margin: 0;
+  }
+  .companions-notice strong{
+    color: #a8392f;
+    font-weight: 600;
+  }
   .companion-field{
     margin-bottom: 0.8rem;
   }
@@ -1929,6 +1956,10 @@
             <div class="companions-wrap" id="companions-wrap" style="display:none;">
               <p class="companions-title">Tus acompañantes</p>
               <p class="companions-sub" id="companions-sub">Cuéntanos quiénes vendrán contigo</p>
+              <div class="companions-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+                <p>Para efectos de control y <strong>tu seguridad</strong>, es importante registrar el <strong>N.° de DNI correctamente</strong>.</p>
+              </div>
               <div id="companions-fields"><!-- generado por JS --></div>
             </div>
 
@@ -2046,7 +2077,6 @@
           <li><span class="ico">📱</span><span>Tarjeta de regalo</span></li>
           <li><span class="ico">✨</span><span>Sorpréndeme</span></li>
         </ul>
-        <p class="wishlist-note">Lista de ejemplo — edítala en el código (id="wishlist-list") con tus regalos y enlaces reales.</p>
       </div>
     </div>
     </div>
