@@ -1,3 +1,5 @@
 entrada quincenañera: 8:00
 fiesta: 9:00
 cena: 10:00
+rosa nube !=
+dorado !=

@@ -4,25 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title>Invitación XV Años · Ethel</title>
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://xv-kappa.vercel.app/">
-<meta property="og:title" content="XV Años · Ethel">
-<meta property="og:description" content="Te invito a celebrar conmigo este día tan especial.">
-
-<meta property="og:image"
-content="public/decoración-elegante-para-la-fiesta-de-bodas-rústica-y-vintage-con-luces-flores-velas-blancas-177772877.webp">
-
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="XV Años · Ethel">
-<meta name="twitter:description" content="Te invito a celebrar conmigo este día tan especial.">
-<meta name="twitter:image"
-content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -170,37 +151,38 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
     border-top: 1px solid var(--line);
   }
   .countdown{
-    display:flex;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
     justify-content:center;
-    align-items:baseline;
-    gap: clamp(0.4rem, 2vw, 1rem);
+    max-width: 360px;
+    margin: 0 auto;
     font-family: var(--serif-display);
+  }
+  .countdown-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
   .countdown .num{
     font-size: clamp(1.8rem, 7vw, 2.6rem);
     color: var(--ink);
     font-weight: 500;
-    min-width: 1.6em;
     display:inline-block;
     text-align:center;
+    line-height: 1;
   }
   .countdown .num.seconds{ color: var(--gold-deep); }
-  .countdown .sep{
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
-    color: var(--sand);
-    transform: translateY(-2px);
-  }
   .countdown-labels{
-    display:flex;
-    justify-content:center;
-    gap: clamp(1.1rem, 5.2vw, 2.3rem);
-    margin-top: 0.3rem;
+    display:none;
+  }
+  .countdown-col .label{
+    margin-top: 0.4rem;
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform:uppercase;
     color: var(--gold-deep);
+    text-align:center;
   }
-  .countdown-labels span{ width: 2.4em; text-align:center; }
 
   .scroll-cue{
     margin-top: 3.2vh;
@@ -554,6 +536,50 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
     margin:0;
   }
 
+  /* ---- Colores no permitidos: badges con swatch tachado ---- */
+  .forbidden-colors-wrap{
+    margin-top: 1.3rem;
+    text-align:center;
+  }
+  .forbidden-colors-label{
+    font-family: var(--serif-display);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    opacity: 0.85;
+    margin: 0 0 0.7rem;
+  }
+  .forbidden-colors-row{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap: 1.6rem;
+    flex-wrap:wrap;
+  }
+  .forbidden-color-badge{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 0.4rem;
+  }
+  .forbidden-color-swatch{
+    position:relative;
+    width: 42px;
+    height: 42px;
+    border-radius:50%;
+    box-shadow: 0 3px 8px rgba(70,50,15,0.25), inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .forbidden-color-swatch.rosa-nube{ background: #f3c9d6; }
+  .forbidden-color-swatch.dorado{ background: linear-gradient(135deg, #f3da9c, #b8975a); }
+  .forbidden-color-name{
+    font-family: var(--serif-body);
+    font-size: 0.82rem;
+    color: var(--brown-dark);
+    text-align:center;
+    line-height:1.2;
+  }
+
   /* ===================== REGALOS ===================== */
   .gift-section{
     background: linear-gradient(160deg, #e8cf86 0%, #cda448 55%, #b9893a 100%);
@@ -674,6 +700,87 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
     text-align:center;
     font-style: italic;
   }
+
+  /* ---- Tarjeta de cuenta bancaria dentro de la wishlist ---- */
+  .bank-card{
+    margin-top: 0.7rem;
+    background: linear-gradient(150deg, #fdf8ec 0%, #f3e9d2 100%);
+    border: 1px solid rgba(156,124,62,0.35);
+    border-radius: 14px;
+    padding: 1rem 1.1rem 1.1rem;
+  }
+  .bank-card-head{
+    display:flex;
+    align-items:center;
+    gap: 0.55rem;
+    margin-bottom: 0.85rem;
+  }
+  .bank-card-head svg{
+    width: 20px; height:20px;
+    color: var(--gold-deep);
+    flex-shrink:0;
+  }
+  .bank-card-bank{
+    font-family: var(--serif-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--brown-dark);
+    font-weight:600;
+  }
+  .bank-card-holder{
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--gold-deep);
+    margin-left: auto;
+  }
+  .bank-field{
+    margin-bottom: 0.7rem;
+  }
+  .bank-field:last-child{ margin-bottom: 0; }
+  .bank-field-label{
+    font-family: var(--serif-display);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    opacity: 0.85;
+    margin: 0 0 0.3rem;
+  }
+  .bank-field-row{
+    display:flex;
+    align-items:center;
+    gap: 0.6rem;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(156,124,62,0.2);
+    border-radius: 9px;
+    padding: 0.55rem 0.7rem;
+  }
+  .bank-field-number{
+    font-family: var(--serif-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    word-break: break-all;
+    flex:1;
+  }
+  .bank-copy-btn{
+    flex-shrink:0;
+    background: rgba(156,124,62,0.12);
+    border: 1px solid rgba(156,124,62,0.3);
+    border-radius: 7px;
+    width: 30px; height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--gold-deep);
+    cursor:pointer;
+    transition: background .2s ease, transform .15s ease;
+  }
+  .bank-copy-btn:hover{ background: rgba(156,124,62,0.22); }
+  .bank-copy-btn:active{ transform: scale(0.92); }
+  .bank-copy-btn svg{ width: 14px; height:14px; }
+  .bank-copy-btn.copied{ background: rgba(74,107,58,0.18); color: #4a6b3a; border-color: rgba(74,107,58,0.35); }
 
   /* ===================== MUSIC PLAYER ===================== */
   .music-section{
@@ -1611,13 +1718,22 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
     <div class="countdown-wrap">
       <hr class="countdown-divider">
       <div class="countdown" id="countdown">
-        <span class="num" id="cd-days">00</span><span class="sep">:</span>
-        <span class="num" id="cd-hours">00</span><span class="sep">:</span>
-        <span class="num" id="cd-mins">00</span><span class="sep">:</span>
-        <span class="num seconds" id="cd-secs">00</span>
-      </div>
-      <div class="countdown-labels">
-        <span>Días</span><span>Hrs</span><span>Min</span><span>Seg</span>
+        <div class="countdown-col">
+          <span class="num" id="cd-days">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="countdown-col">
+          <span class="num" id="cd-hours">00</span>
+          <span class="label">Hrs</span>
+        </div>
+        <div class="countdown-col">
+          <span class="num" id="cd-mins">00</span>
+          <span class="label">Min</span>
+        </div>
+        <div class="countdown-col">
+          <span class="num seconds" id="cd-secs">00</span>
+          <span class="label">Seg</span>
+        </div>
       </div>
       <div class="scroll-cue">
         <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 1l11 9 11-9"/></svg>
@@ -1838,6 +1954,18 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
           </div>
         </div>
 
+        <!-- STAGE 5: ya confirmó previamente -->
+        <div class="rsvp-stage" id="stage-already">
+          <div class="rsvp-result">
+            <div class="rsvp-result-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="rsvp-found-label">Ya registraste tu asistencia</p>
+            <p class="rsvp-found-name" id="rsvp-already-name">—</p>
+            <p class="rsvp-notfound-text" style="margin-top:0.8rem;">Tu reservación ya fue confirmada anteriormente desde este dispositivo. Si crees que esto es un error, contáctanos directamente.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1848,6 +1976,19 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
       <span class="corner-title">IMPORTANTE</span>
       <p class="dresscode-label">VESTIMENTA</p>
       <p class="dresscode-text">El código de vestimenta será formal y semi-formal.</p>
+      <div class="forbidden-colors-wrap">
+        <p class="forbidden-colors-label">Colores no permitidos</p>
+        <div class="forbidden-colors-row">
+          <div class="forbidden-color-badge">
+            <span class="forbidden-color-swatch rosa-nube"></span>
+            <span class="forbidden-color-name">Rosa nube</span>
+          </div>
+          <div class="forbidden-color-badge">
+            <span class="forbidden-color-swatch dorado"></span>
+            <span class="forbidden-color-name">Dorado</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1869,6 +2010,37 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
         <h3>Mi lista de regalos</h3>
         <ul class="wishlist-list" id="wishlist-list">
           <li><span class="ico">🎁</span><span>Sobre con efectivo</span></li>
+        </ul>
+
+        <div class="bank-card">
+          <div class="bank-card-head">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4" stroke-linecap="round"/></svg>
+            <span class="bank-card-bank">BCP · Cuenta Soles</span>
+            <span class="bank-card-holder">Ethel</span>
+          </div>
+
+          <div class="bank-field">
+            <p class="bank-field-label">Número de cuenta</p>
+            <div class="bank-field-row">
+              <span class="bank-field-number" id="bank-account-number">475-17704908-0-03</span>
+              <button class="bank-copy-btn" type="button" data-copy-target="bank-account-number" aria-label="Copiar número de cuenta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="bank-field">
+            <p class="bank-field-label">Cuenta interbancaria (CCI)</p>
+            <div class="bank-field-row">
+              <span class="bank-field-number" id="bank-cci-number">00247511770490800324</span>
+              <button class="bank-copy-btn" type="button" data-copy-target="bank-cci-number" aria-label="Copiar número CCI">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="wishlist-list" id="wishlist-list-2" style="margin-top:0.9rem;">
           <li><span class="ico">💄</span><span>Perfume / Maquillaje</span></li>
           <li><span class="ico">👜</span><span>Cartera o accesorios</span></li>
           <li><span class="ico">📱</span><span>Tarjeta de regalo</span></li>
@@ -2092,6 +2264,54 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
 })();
 
 /* =========================================================
+   4b) COPIAR DATOS BANCARIOS — número de cuenta y CCI
+========================================================= */
+(function(){
+  var copyButtons = document.querySelectorAll('.bank-copy-btn');
+
+  function fallbackCopy(text){
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try { document.execCommand('copy'); } catch(e){ /* silencioso */ }
+    document.body.removeChild(textarea);
+  }
+
+  copyButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var targetId = btn.getAttribute('data-copy-target');
+      var targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+      var text = targetEl.textContent.trim();
+
+      var onCopied = function(){
+        var originalSvg = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+        setTimeout(function(){
+          btn.classList.remove('copied');
+          btn.innerHTML = originalSvg;
+        }, 1600);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(onCopied).catch(function(){
+          fallbackCopy(text);
+          onCopied();
+        });
+      } else {
+        fallbackCopy(text);
+        onCopied();
+      }
+    });
+  });
+})();
+
+/* =========================================================
    5) CONFIRMAR ASISTENCIA (RSVP)
    - Base de invitados (nombre + teléfono + pases).
    - Validación estricta: exactamente 9 dígitos numéricos.
@@ -2139,7 +2359,8 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
   var stageLoading   = document.getElementById('stage-loading');
   var stageResult    = document.getElementById('stage-result');
   var stageNotFound  = document.getElementById('stage-notfound');
-  var allStages      = [stageForm, stageLoading, stageResult, stageNotFound];
+  var stageAlready   = document.getElementById('stage-already');
+  var allStages      = [stageForm, stageLoading, stageResult, stageNotFound, stageAlready];
 
   var inputRow       = document.getElementById('rsvp-input-row');
   var phoneInput     = document.getElementById('rsvp-phone');
@@ -2164,6 +2385,34 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
 
   var loadingTimers  = [];
   var currentGuest   = null;
+
+  // ---- Control de "ya confirmó" usando localStorage del navegador ----
+  // El archivo invitados.json es estático (no se puede reescribir desde el
+  // cliente), así que el bloqueo real vive en localStorage: una vez que el
+  // invitado confirma, se guarda su id como confirmado en este dispositivo.
+  var RSVP_STORAGE_KEY = 'xv_ethel_rsvp_confirmados';
+
+  function getConfirmadosLocal(){
+    try{
+      var raw = localStorage.getItem(RSVP_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e){
+      return {};
+    }
+  }
+
+  function isGuestConfirmedLocal(guestId){
+    var confirmados = getConfirmadosLocal();
+    return !!confirmados[guestId];
+  }
+
+  function markGuestConfirmedLocal(guestId){
+    try{
+      var confirmados = getConfirmadosLocal();
+      confirmados[guestId] = true;
+      localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify(confirmados));
+    } catch(e){ /* localStorage no disponible: se ignora silenciosamente */ }
+  }
 
   function clearLoadingTimers(){
     loadingTimers.forEach(function(t){ clearTimeout(t); });
@@ -2252,8 +2501,8 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
 
     companionsWrap.style.display = 'block';
     companionsSub.textContent = companionsCount === 1
-      ? 'Tienes 1 pase adicional. Cuéntanos quién te acompañará.'
-      : 'Tienes ' + companionsCount + ' pases adicionales. Cuéntanos quiénes te acompañarán.';
+      ? 'Tienes 1 pase adicional (opcional). Si quieres, cuéntanos quién te acompañará.'
+      : 'Tienes ' + companionsCount + ' pases adicionales (opcional). Puedes completar solo los que necesites.';
 
     for (var i = 1; i <= companionsCount; i++){
       var card = document.createElement('div');
@@ -2324,6 +2573,13 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
       var name = nameInput.value.trim();
       var dni  = dniInput.value.trim();
 
+      // Tarjeta completamente vacía -> acompañante opcional, se omite sin error
+      if (name === '' && dni === ''){
+        nameInput.classList.remove('invalid');
+        dniInput.classList.remove('invalid');
+        return;
+      }
+
       var nameOk = name !== '';
       var dniOk  = isValidDni(dni);
 
@@ -2386,7 +2642,10 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
       var guest = findGuestByPhone(raw);
       btnSubmit.disabled = false;
 
-      if (guest){
+      if (guest && (guest.confirmado === true || isGuestConfirmedLocal(guest.id))){
+        document.getElementById('rsvp-already-name').textContent = guest.name;
+        showStage(stageAlready);
+      } else if (guest){
         currentGuest = guest;
         foundNameEl.textContent = guest.name;
         foundPhoneEl.textContent = formatPhonePretty(guest.phone);
@@ -2522,6 +2781,11 @@ content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
       .then(function(resultado){
         btnConfirm.classList.remove('sending');
         if (resultado === "OK"){
+          // Se bloquea de forma permanente (en este dispositivo) aunque el
+          // invitado haya registrado menos acompañantes de los pases que
+          // tenía disponibles (ej: 3 de 5 pases) — no podrá volver a
+          // confirmar ni para sí mismo ni para más acompañantes.
+          markGuestConfirmedLocal(currentGuest.id);
           confirmBtnText.textContent = 'Asistencia confirmada ✓';
           confirmedMsg.textContent = totalPersonas > 1
             ? '¡Gracias! Se confirmó tu asistencia junto a ' + companionData.people.length + ' acompañante(s). Te esperamos 💛'
