@@ -109,7 +109,8 @@
     font-family: var(--script);
     font-size: clamp(4rem, 16vw, 6.5rem);
     margin: 1.2rem 0 0.4rem;
-    line-height: 1;
+    line-height: 1.3;
+    padding: 0 0.15em 0.1em;
     position:relative;
     z-index:2;
     background: linear-gradient(100deg, #241b10 0%, #3b2c18 30%, #8a6a32 60%, #c79a4a 85%);
@@ -1923,7 +1924,7 @@
     </div>
 
     <p class="spotify-suggest">Si tienes alguna sugerencia<br>¡haz clic en el ícono de spotify!</p>
-    <a class="btn-spotify" id="btn-spotify" href="https://open.spotify.com/playlist/1gsODoXvYdsqXBMEqYgTgf" target="_blank" rel="noopener">
+    <a class="btn-spotify" id="btn-spotify" href="https://open.spotify.com" target="_blank" rel="noopener">
       <span class="spotify-ic">
         <svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.226.348-.687.452-1.035.225-2.834-1.733-6.41-2.123-10.617-1.163-.403.09-.806-.18-.896-.583-.09-.403.18-.806.583-.896 4.601-1.05 8.544-.6 11.74 1.382.348.226.452.687.225 1.035zm1.449-3.23c-.283.435-.866.566-1.301.283-3.246-1.994-8.193-2.573-12.034-1.41-.504.153-1.034-.135-1.187-.638-.152-.504.135-1.033.638-1.187 4.394-1.333 9.852-.687 13.6 1.65.435.283.566.866.284 1.302zm.125-3.363C15.106 8.435 8.97 8.224 5.49 9.298c-.605.183-1.244-.158-1.428-.763-.184-.605.158-1.244.763-1.428 4.02-1.222 10.766-.987 15.026 1.553.553.327.733 1.039.406 1.591-.327.553-1.039.733-1.591.406z"/></svg>
       </span>
@@ -2081,52 +2082,33 @@
    - Envío final a Google Sheets vía Apps Script (sin problemas de CORS).
 ========================================================= */
 (function(){
-  var GUESTS = [
-    { name: "Domenica",        phone: "997115125", passes: 1 },
-    { name: "Luha",            phone: "924483703", passes: 1 },
-    { name: "Killary",         phone: "937617167", passes: 1 },
-    { name: "Gladys",          phone: "951767751", passes: 1 },
-    { name: "Rayza",           phone: "937150205", passes: 1 },
-    { name: "Cinthia",         phone: "928072486", passes: 1 },
-    { name: "Avril",           phone: "906117623", passes: 1 },
-    { name: "Luis",            phone: "939958230", passes: 1 },
-    { name: "Jheferson",       phone: "991363230", passes: 1 },
-    { name: "Fabrizio.N mom",  phone: "950798616", passes: 1 },
-    { name: "Fabrizio.T",      phone: "979108883", passes: 1 },
-    { name: "Eric",            phone: "918094257", passes: 1 },
-    { name: "Anthony",         phone: "982042416", passes: 1 },
-    { name: "Jeremy",          phone: "980821188", passes: 1 },
-    { name: "Luis Angel",      phone: "976626839", passes: 1 },
-    { name: "Marcos",          phone: "942416799", passes: 1 },
-    { name: "Gonzalo",         phone: "975863248", passes: 1 },
-    { name: "Diego",           phone: "936655753", passes: 1 },
-    { name: "Adrian",          phone: "957899378", passes: 1 },
-    { name: "Orlando",         phone: "965021001", passes: 1 },
-    { name: "Luke",            phone: "986654012", passes: 1 },
-    { name: "Valentina",       phone: "922617301", passes: 1 },
-    { name: "Luana",           phone: "949610971", passes: 1 },
-    { name: "Prof.Franco",     phone: "953225701", passes: 1 },
-    { name: "Prof.Carolina",   phone: "957985157", passes: 2 },
-    { name: "Fatima",          phone: "995428944", passes: 1 },
-    { name: "Yolanda C.",      phone: "988966210", passes: 2 },
-    { name: "Donald",          phone: "940105861", passes: 1 },
-    { name: "Estrella",        phone: "982503385", passes: 1 },
-    { name: "Jorge",           phone: "956129627", passes: 2 },
-    { name: "Maria elena",     phone: "959555697", passes: 2 },
-    { name: "Mariana",         phone: "999924048", passes: 2 },
-    { name: "Roberto",         phone: "918500785", passes: 3 },
-    { name: "Etelvina",        phone: "988311185", passes: 2 },
-    { name: "Dany",            phone: "992617781", passes: 2 },
-    { name: "Pilar",           phone: "",          passes: 2 },
-    { name: "Ivette",          phone: "969687509", passes: 5 },
-    { name: "Lorena",          phone: "956929884", passes: 3 },
-    { name: "Carolina",        phone: "920900308", passes: 2 },
-    { name: "Sandra",          phone: "949192562", passes: 2 },
-    { name: "Dolly",           phone: "952931179", passes: 2 },
-    { name: "Fanny",           phone: "981710755", passes: 1 },
-    { name: "Manuel Cevallos", phone: "992135471", passes: 5 },
-    { name: "Julieth",         phone: "933973554", passes: 1 }
-  ];
+  // ---- Data de invitados: cargada desde archivo externo invitados.json ----
+  // (antes vivía hardcodeada aquí mismo; ahora se separa para que el
+  // contenido pueda actualizarse sin tocar el HTML/JS).
+  var GUESTS = [];
+  var guestsLoaded = false;
+  var guestsLoadError = false;
+
+  function loadGuestsData(){
+    return fetch('invitados.json')
+      .then(function(resp){
+        if (!resp.ok) throw new Error('No se pudo cargar invitados.json');
+        return resp.json();
+      })
+      .then(function(data){
+        GUESTS = data;
+        guestsLoaded = true;
+      })
+      .catch(function(err){
+        console.error('Error cargando invitados.json:', err);
+        guestsLoadError = true;
+      });
+  }
+
+  // Se inicia la carga de inmediato (en paralelo a que el usuario lea la
+  // invitación); para cuando llegue a la sección de RSVP y presione buscar,
+  // lo normal es que ya esté lista.
+  var guestsReadyPromise = loadGuestsData();
 
   // ---- Endpoint de Google Sheets (Apps Script Web App) ----
   var SHEETS_URL = "https://script.google.com/macros/s/AKfycbwEQH2GgnVz6Ech8nQEeQYf9GPguf9P2aBEGpCmuxB8THiu6Nkys4QxBqYn01_QlLbBZw/exec";
