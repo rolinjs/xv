@@ -1178,6 +1178,170 @@
   }
   .rsvp-confirmed-msg.show{ opacity:1; transform:none; }
 
+  /* ---- Pases / acompañantes ---- */
+  .rsvp-passes-badge{
+    display:inline-flex;
+    align-items:center;
+    gap: 0.4rem;
+    background: rgba(156,124,62,0.12);
+    border: 1px solid rgba(156,124,62,0.3);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-family: var(--serif-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 0.2rem 0 0;
+  }
+  .rsvp-passes-badge svg{ width:14px; height:14px; }
+
+  .companions-wrap{
+    margin-top: 1.7rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(156,124,62,0.35);
+    text-align:left;
+  }
+  .companions-title{
+    font-family: var(--serif-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+    text-align:center;
+    margin: 0 0 0.3rem;
+  }
+  .companions-sub{
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--gold-deep);
+    text-align:center;
+    opacity:0.85;
+    margin: 0 0 1.2rem;
+  }
+  .companion-field{
+    margin-bottom: 0.8rem;
+  }
+  .companion-field label{
+    display:block;
+    font-family: var(--serif-display);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 0 0 0.35rem;
+  }
+  .companion-field input{
+    width: 100%;
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    font-family: var(--serif-display);
+    font-size: 0.98rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+    box-sizing: border-box;
+  }
+  .companion-field input::placeholder{ color: #b8aa84; }
+  .companion-field input:focus{
+    border-color: var(--gold-deep);
+    box-shadow: 0 0 0 3px rgba(156,124,62,0.15);
+  }
+  .companion-field input.invalid{
+    border-color: #c0463f;
+    box-shadow: 0 0 0 3px rgba(192,70,63,0.12);
+  }
+  .companion-card{
+    background: rgba(243,233,210,0.5);
+    border: 1px solid rgba(156,124,62,0.2);
+    border-radius: 14px;
+    padding: 0.9rem 0.9rem 0.2rem;
+    margin-bottom: 0.9rem;
+  }
+  .companion-card-title{
+    font-family: var(--serif-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brown-dark);
+    margin: 0 0 0.7rem;
+  }
+  .companion-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  @media (max-width: 360px){
+    .companion-row{ grid-template-columns: 1fr; }
+  }
+
+  /* ---- DNI del titular ---- */
+  .titular-dni-wrap{
+    margin-top: 1.1rem;
+    text-align:left;
+  }
+  .titular-dni-wrap label{
+    display:block;
+    font-family: var(--serif-display);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 0 0 0.35rem;
+    text-align:center;
+  }
+  .titular-dni-wrap input{
+    width: 100%;
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    font-family: var(--serif-display);
+    font-size: 0.98rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    outline: none;
+    text-align:center;
+    transition: border-color .2s ease, box-shadow .2s ease;
+    box-sizing: border-box;
+  }
+  .titular-dni-wrap input::placeholder{ color: #b8aa84; }
+  .titular-dni-wrap input:focus{
+    border-color: var(--gold-deep);
+    box-shadow: 0 0 0 3px rgba(156,124,62,0.15);
+  }
+  .titular-dni-wrap input.invalid{
+    border-color: #c0463f;
+    box-shadow: 0 0 0 3px rgba(192,70,63,0.12);
+  }
+
+  .rsvp-send-error{
+    font-family: var(--serif-body);
+    font-size: 0.85rem;
+    color: #a8392f;
+    margin: 0.7rem 0 0;
+    text-align:center;
+    min-height: 1.1em;
+  }
+
+  .btn-confirm-attendance.sending{
+    opacity: 0.75;
+    cursor: wait;
+  }
+  .btn-confirm-attendance .mini-spin{
+    width: 15px; height:15px;
+    border-radius:50%;
+    border: 2px solid rgba(255,248,232,0.4);
+    border-top-color: #fff8e8;
+    animation: spin 0.8s linear infinite;
+    display:none;
+  }
+  .btn-confirm-attendance.sending .mini-spin{ display:inline-block; }
+  .btn-confirm-attendance.sending svg.check-ic{ display:none; }
+
   /* Stage: no encontrado */
   .rsvp-notfound{
     text-align:center;
@@ -1616,11 +1780,29 @@
             <p class="rsvp-found-label">Reservación encontrada</p>
             <p class="rsvp-found-name" id="rsvp-found-name">—</p>
             <p class="rsvp-found-phone" id="rsvp-found-phone">+51 000 000 000</p>
-            <hr class="rsvp-divider-mini">
+            <span class="rsvp-passes-badge" id="rsvp-passes-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v14H7l-3 3V4z"/></svg>
+              <span id="rsvp-passes-text">1 pase</span>
+            </span>
+
+            <div class="titular-dni-wrap">
+              <label for="titular-dni">Tu DNI</label>
+              <input type="text" id="titular-dni" inputmode="numeric" maxlength="8" placeholder="12345678">
+            </div>
+
+            <div class="companions-wrap" id="companions-wrap" style="display:none;">
+              <p class="companions-title">Tus acompañantes</p>
+              <p class="companions-sub" id="companions-sub">Cuéntanos quiénes vendrán contigo</p>
+              <div id="companions-fields"><!-- generado por JS --></div>
+            </div>
+
+            <hr class="rsvp-divider-mini" style="margin-top:1.5rem;">
             <button class="btn-confirm-attendance" id="btn-confirm-attendance" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              <svg class="check-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="mini-spin"></span>
               <span id="confirm-btn-text">Confirmar asistencia</span>
             </button>
+            <p class="rsvp-send-error" id="rsvp-send-error"></p>
             <p class="rsvp-confirmed-msg" id="rsvp-confirmed-msg">¡Gracias! Tu asistencia ha sido confirmada. Te esperamos 💛</p>
           </div>
         </div>
@@ -1741,7 +1923,7 @@
     </div>
 
     <p class="spotify-suggest">Si tienes alguna sugerencia<br>¡haz clic en el ícono de spotify!</p>
-    <a class="btn-spotify" id="btn-spotify" href="https://open.spotify.com/playlist/1gsODoXvYdsqXBMEqYgTgf" target="_blank" rel="noopener">
+    <a class="btn-spotify" id="btn-spotify" href="https://open.spotify.com" target="_blank" rel="noopener">
       <span class="spotify-ic">
         <svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.226.348-.687.452-1.035.225-2.834-1.733-6.41-2.123-10.617-1.163-.403.09-.806-.18-.896-.583-.09-.403.18-.806.583-.896 4.601-1.05 8.544-.6 11.74 1.382.348.226.452.687.225 1.035zm1.449-3.23c-.283.435-.866.566-1.301.283-3.246-1.994-8.193-2.573-12.034-1.41-.504.153-1.034-.135-1.187-.638-.152-.504.135-1.033.638-1.187 4.394-1.333 9.852-.687 13.6 1.65.435.283.566.866.284 1.302zm.125-3.363C15.106 8.435 8.97 8.224 5.49 9.298c-.605.183-1.244-.158-1.428-.763-.184-.605.158-1.244.763-1.428 4.02-1.222 10.766-.987 15.026 1.553.553.327.733 1.039.406 1.591-.327.553-1.039.733-1.591.406z"/></svg>
       </span>
@@ -1891,43 +2073,66 @@
 
 /* =========================================================
    5) CONFIRMAR ASISTENCIA (RSVP)
-   - Base de invitados (nombre + teléfono) provista por el usuario.
+   - Base de invitados (nombre + teléfono + pases).
    - Validación estricta: exactamente 9 dígitos numéricos.
-   - Búsqueda simulada con 2 mensajes de carga secuenciales.
+   - Búsqueda simulada con mensajes de carga secuenciales.
+   - Si tiene más de 1 pase, genera formularios para acompañantes.
    - Resultado mostrado inline (sin modal) dentro de la misma sección.
+   - Envío final a Google Sheets vía Apps Script (sin problemas de CORS).
 ========================================================= */
 (function(){
   var GUESTS = [
-    { name: "Domenica",        phone: "997115125" },
-    { name: "Luha",            phone: "924483703" },
-    { name: "Killary",         phone: "937617167" },
-    { name: "Gladys",          phone: "951767751" },
-    { name: "Rayza",           phone: "937150205" },
-    { name: "Cinthia",         phone: "928072486" },
-    { name: "Avril",           phone: "906117623" },
-    { name: "Luis",            phone: "939958230" },
-    { name: "Jheferson",       phone: "991363230" },
-    { name: "Fabrizio.N mom",  phone: "950798616" },
-    { name: "Fabrizio.T",      phone: "979108883" },
-    { name: "Eric",            phone: "918094257" },
-    { name: "Anthony",         phone: "982042416" },
-    { name: "Jeremy",          phone: "980821188" },
-    { name: "Luis Angel",      phone: "976626839" },
-    { name: "Marcos",          phone: "942416799" },
-    { name: "Gonzalo",         phone: "975863248" },
-    { name: "Diego",           phone: "936655753" },
-    { name: "Adrian",          phone: "957899378" },
-    { name: "Orlando",         phone: "965021001" },
-    { name: "Luke",            phone: "986654012" },
-    { name: "Valentina",       phone: "922617301" },
-    { name: "Luana",           phone: "949610971" },
-    { name: "Prof.Franco",     phone: "953225701" },
-    { name: "Prof.Carolina",   phone: "957985157" }
+    { name: "Domenica",        phone: "997115125", passes: 1 },
+    { name: "Luha",            phone: "924483703", passes: 1 },
+    { name: "Killary",         phone: "937617167", passes: 1 },
+    { name: "Gladys",          phone: "951767751", passes: 1 },
+    { name: "Rayza",           phone: "937150205", passes: 1 },
+    { name: "Cinthia",         phone: "928072486", passes: 1 },
+    { name: "Avril",           phone: "906117623", passes: 1 },
+    { name: "Luis",            phone: "939958230", passes: 1 },
+    { name: "Jheferson",       phone: "991363230", passes: 1 },
+    { name: "Fabrizio.N mom",  phone: "950798616", passes: 1 },
+    { name: "Fabrizio.T",      phone: "979108883", passes: 1 },
+    { name: "Eric",            phone: "918094257", passes: 1 },
+    { name: "Anthony",         phone: "982042416", passes: 1 },
+    { name: "Jeremy",          phone: "980821188", passes: 1 },
+    { name: "Luis Angel",      phone: "976626839", passes: 1 },
+    { name: "Marcos",          phone: "942416799", passes: 1 },
+    { name: "Gonzalo",         phone: "975863248", passes: 1 },
+    { name: "Diego",           phone: "936655753", passes: 1 },
+    { name: "Adrian",          phone: "957899378", passes: 1 },
+    { name: "Orlando",         phone: "965021001", passes: 1 },
+    { name: "Luke",            phone: "986654012", passes: 1 },
+    { name: "Valentina",       phone: "922617301", passes: 1 },
+    { name: "Luana",           phone: "949610971", passes: 1 },
+    { name: "Prof.Franco",     phone: "953225701", passes: 1 },
+    { name: "Prof.Carolina",   phone: "957985157", passes: 2 },
+    { name: "Fatima",          phone: "995428944", passes: 1 },
+    { name: "Yolanda C.",      phone: "988966210", passes: 2 },
+    { name: "Donald",          phone: "940105861", passes: 1 },
+    { name: "Estrella",        phone: "982503385", passes: 1 },
+    { name: "Jorge",           phone: "956129627", passes: 2 },
+    { name: "Maria elena",     phone: "959555697", passes: 2 },
+    { name: "Mariana",         phone: "999924048", passes: 2 },
+    { name: "Roberto",         phone: "918500785", passes: 3 },
+    { name: "Etelvina",        phone: "988311185", passes: 2 },
+    { name: "Dany",            phone: "992617781", passes: 2 },
+    { name: "Pilar",           phone: "",          passes: 2 },
+    { name: "Ivette",          phone: "969687509", passes: 5 },
+    { name: "Lorena",          phone: "956929884", passes: 3 },
+    { name: "Carolina",        phone: "920900308", passes: 2 },
+    { name: "Sandra",          phone: "949192562", passes: 2 },
+    { name: "Dolly",           phone: "952931179", passes: 2 },
+    { name: "Fanny",           phone: "981710755", passes: 1 },
+    { name: "Manuel Cevallos", phone: "992135471", passes: 5 },
+    { name: "Julieth",         phone: "933973554", passes: 1 }
   ];
+
+  // ---- Endpoint de Google Sheets (Apps Script Web App) ----
+  var SHEETS_URL = "https://script.google.com/macros/s/AKfycbwEQH2GgnVz6Ech8nQEeQYf9GPguf9P2aBEGpCmuxB8THiu6Nkys4QxBqYn01_QlLbBZw/exec";
 
   var btnOpen        = document.getElementById('btn-rsvp-open');
   var panel          = document.getElementById('rsvp-panel');
-  var section        = document.getElementById('rsvp-section');
 
   var stageForm      = document.getElementById('stage-form');
   var stageLoading   = document.getElementById('stage-loading');
@@ -1943,12 +2148,21 @@
 
   var foundNameEl    = document.getElementById('rsvp-found-name');
   var foundPhoneEl   = document.getElementById('rsvp-found-phone');
+  var passesBadge    = document.getElementById('rsvp-passes-badge');
+  var passesTextEl   = document.getElementById('rsvp-passes-text');
+  var titularDniInput= document.getElementById('titular-dni');
+  var companionsWrap = document.getElementById('companions-wrap');
+  var companionsSub  = document.getElementById('companions-sub');
+  var companionsBox  = document.getElementById('companions-fields');
+
   var btnConfirm     = document.getElementById('btn-confirm-attendance');
   var confirmBtnText = document.getElementById('confirm-btn-text');
   var confirmedMsg   = document.getElementById('rsvp-confirmed-msg');
+  var sendErrorEl    = document.getElementById('rsvp-send-error');
   var btnRetry       = document.getElementById('btn-rsvp-retry');
 
   var loadingTimers  = [];
+  var currentGuest   = null;
 
   function clearLoadingTimers(){
     loadingTimers.forEach(function(t){ clearTimeout(t); });
@@ -1961,7 +2175,7 @@
   }
 
   function formatPhonePretty(digits){
-    // 987654321 -> +51 987 654 321
+    if (!digits) return 'Sin número registrado';
     return '+51 ' + digits.slice(0,3) + ' ' + digits.slice(3,6) + ' ' + digits.slice(6,9);
   }
 
@@ -2008,8 +2222,122 @@
     return null;
   }
 
+  function isValidDni(value){
+    return /^[0-9]{8}$/.test(value);
+  }
+
+  if (titularDniInput){
+    titularDniInput.addEventListener('input', function(){
+      titularDniInput.value = titularDniInput.value.replace(/\D/g, '').slice(0, 8);
+      titularDniInput.classList.remove('invalid');
+      sendErrorEl.textContent = '';
+    });
+  }
+
   function findGuestByPhone(value){
     return GUESTS.find(function(g){ return g.phone === value; });
+  }
+
+  // ---- Generar campos dinámicos de acompañantes ----
+  // El titular ya cuenta como 1 invitado; si tiene N pases, registra N-1 acompañantes.
+  function buildCompanionFields(passes){
+    companionsBox.innerHTML = '';
+    var companionsCount = Math.max(passes - 1, 0);
+
+    if (companionsCount <= 0){
+      companionsWrap.style.display = 'none';
+      return;
+    }
+
+    companionsWrap.style.display = 'block';
+    companionsSub.textContent = companionsCount === 1
+      ? 'Tienes 1 pase adicional. Cuéntanos quién te acompañará.'
+      : 'Tienes ' + companionsCount + ' pases adicionales. Cuéntanos quiénes te acompañarán.';
+
+    for (var i = 1; i <= companionsCount; i++){
+      var card = document.createElement('div');
+      card.className = 'companion-card';
+
+      var title = document.createElement('p');
+      title.className = 'companion-card-title';
+      title.textContent = 'Acompañante ' + i;
+
+      var row = document.createElement('div');
+      row.className = 'companion-row';
+
+      var fieldName = document.createElement('div');
+      fieldName.className = 'companion-field';
+      var labelName = document.createElement('label');
+      labelName.setAttribute('for', 'companion-name-' + i);
+      labelName.textContent = 'Nombre completo';
+      var inputName = document.createElement('input');
+      inputName.type = 'text';
+      inputName.id = 'companion-name-' + i;
+      inputName.className = 'companion-input-name';
+      inputName.placeholder = 'Nombre y apellido';
+      inputName.dataset.index = i;
+      inputName.addEventListener('input', function(){
+        this.classList.remove('invalid');
+        sendErrorEl.textContent = '';
+      });
+      fieldName.appendChild(labelName);
+      fieldName.appendChild(inputName);
+
+      var fieldDni = document.createElement('div');
+      fieldDni.className = 'companion-field';
+      var labelDni = document.createElement('label');
+      labelDni.setAttribute('for', 'companion-dni-' + i);
+      labelDni.textContent = 'DNI';
+      var inputDni = document.createElement('input');
+      inputDni.type = 'text';
+      inputDni.id = 'companion-dni-' + i;
+      inputDni.className = 'companion-input-dni';
+      inputDni.inputMode = 'numeric';
+      inputDni.maxLength = 8;
+      inputDni.placeholder = '12345678';
+      inputDni.dataset.index = i;
+      inputDni.addEventListener('input', function(){
+        this.value = this.value.replace(/\D/g, '').slice(0, 8);
+        this.classList.remove('invalid');
+        sendErrorEl.textContent = '';
+      });
+      fieldDni.appendChild(labelDni);
+      fieldDni.appendChild(inputDni);
+
+      row.appendChild(fieldName);
+      row.appendChild(fieldDni);
+      card.appendChild(title);
+      card.appendChild(row);
+      companionsBox.appendChild(card);
+    }
+  }
+
+  function getCompanionData(){
+    var cards = companionsBox.querySelectorAll('.companion-card');
+    var people = [];
+    var allValid = true;
+
+    cards.forEach(function(card){
+      var nameInput = card.querySelector('.companion-input-name');
+      var dniInput  = card.querySelector('.companion-input-dni');
+      var name = nameInput.value.trim();
+      var dni  = dniInput.value.trim();
+
+      var nameOk = name !== '';
+      var dniOk  = isValidDni(dni);
+
+      if (!nameOk){ nameInput.classList.add('invalid'); allValid = false; }
+      else { nameInput.classList.remove('invalid'); }
+
+      if (!dniOk){ dniInput.classList.add('invalid'); allValid = false; }
+      else { dniInput.classList.remove('invalid'); }
+
+      if (nameOk && dniOk){
+        people.push({ name: name, dni: dni });
+      }
+    });
+
+    return { people: people, valid: allValid };
   }
 
   function handleSearch(){
@@ -2058,11 +2386,22 @@
       btnSubmit.disabled = false;
 
       if (guest){
+        currentGuest = guest;
         foundNameEl.textContent = guest.name;
         foundPhoneEl.textContent = formatPhonePretty(guest.phone);
+        passesTextEl.textContent = guest.passes === 1 ? '1 pase' : (guest.passes + ' pases');
+
+        buildCompanionFields(guest.passes);
+        if (titularDniInput){
+          titularDniInput.value = '';
+          titularDniInput.classList.remove('invalid');
+        }
+
         btnConfirm.disabled = false;
+        btnConfirm.classList.remove('sending');
         confirmBtnText.textContent = 'Confirmar asistencia';
         confirmedMsg.classList.remove('show');
+        sendErrorEl.textContent = '';
         showStage(stageResult);
       } else {
         showStage(stageNotFound);
@@ -2084,11 +2423,122 @@
     setTimeout(function(){ phoneInput.focus(); }, 50);
   });
 
+  // ---- Envío a Google Sheets (Apps Script) ----
+  // El Sheet recibe columnas fijas: Fecha (la pone el script), Nombre, Correo,
+  // Teléfono, Mensaje. No existen columnas para "pases" ni "acompañantes",
+  // así que se envía UNA FILA POR PERSONA (titular + cada acompañante),
+  // usando "Mensaje" para dar contexto (rol y a quién acompaña).
+  // Se usa URLSearchParams + fetch en modo simple (application/x-www-form-urlencoded
+  // vía body de URLSearchParams) para evitar el preflight de CORS, tal como
+  // requiere un Web App de Apps Script publicado con doPost().
+  function sendOneRow(nombre, correo, telefono, mensaje){
+    var datos = new URLSearchParams();
+    datos.append("nombre", nombre);
+    datos.append("correo", correo);
+    datos.append("telefono", telefono);
+    datos.append("mensaje", mensaje);
+
+    return fetch(SHEETS_URL, {
+      method: "POST",
+      body: datos
+    }).then(function(respuesta){
+      return respuesta.text();
+    });
+  }
+
+  // Envía la fila del titular y luego, en secuencia, una fila por cada
+  // acompañante. Se hace de forma secuencial (no en paralelo) para evitar
+  // condiciones de carrera al escribir filas en el mismo Sheet.
+  function sendRegistroToSheets(payload){
+    var filas = [
+      { nombre: payload.nombre, correo: payload.dni, telefono: payload.telefono, mensaje: "" }
+    ];
+
+    payload.acompanantes.forEach(function(persona){
+      filas.push({
+        nombre: persona.name,
+        correo: persona.dni,
+        telefono: "",
+        mensaje: ""
+      });
+    });
+
+    // Encadenar envíos uno tras otro
+    var promesa = Promise.resolve();
+    var resultados = [];
+
+    filas.forEach(function(fila){
+      promesa = promesa.then(function(){
+        return sendOneRow(fila.nombre, fila.correo, fila.telefono, fila.mensaje);
+      }).then(function(texto){
+        resultados.push(texto);
+      });
+    });
+
+    return promesa.then(function(){
+      // Se considera éxito si TODAS las filas devolvieron "OK"
+      var todasOk = resultados.every(function(t){ return t && t.trim() === "OK"; });
+      return todasOk ? "OK" : "ERROR";
+    });
+  }
+
   btnConfirm.addEventListener('click', function(){
     if (btnConfirm.disabled) return;
+
+    var titularDni = titularDniInput ? titularDniInput.value.trim() : '';
+    var titularDniOk = isValidDni(titularDni);
+
+    if (!titularDniOk){
+      if (titularDniInput) titularDniInput.classList.add('invalid');
+      sendErrorEl.textContent = 'Ingresa tu DNI (8 dígitos) para continuar.';
+      if (titularDniInput) titularDniInput.focus();
+      return;
+    }
+    if (titularDniInput) titularDniInput.classList.remove('invalid');
+
+    var companionData = getCompanionData();
+    if (!companionData.valid){
+      sendErrorEl.textContent = 'Por favor completa nombre y DNI (8 dígitos) de cada acompañante.';
+      return;
+    }
+
+    sendErrorEl.textContent = '';
     btnConfirm.disabled = true;
-    confirmBtnText.textContent = 'Asistencia confirmada ✓';
-    confirmedMsg.classList.add('show');
+    btnConfirm.classList.add('sending');
+    var totalPersonas = 1 + companionData.people.length;
+    confirmBtnText.textContent = totalPersonas > 1 ? 'Registrando ' + totalPersonas + ' personas...' : 'Enviando...';
+
+    var payload = {
+      nombre: currentGuest.name,
+      dni: titularDni,
+      telefono: currentGuest.phone || '',
+      pases: currentGuest.passes,
+      acompanantes: companionData.people,
+      evento: "XV Ethel - 18.07.2026"
+    };
+
+    sendRegistroToSheets(payload)
+      .then(function(resultado){
+        btnConfirm.classList.remove('sending');
+        if (resultado === "OK"){
+          confirmBtnText.textContent = 'Asistencia confirmada ✓';
+          confirmedMsg.textContent = totalPersonas > 1
+            ? '¡Gracias! Se confirmó tu asistencia junto a ' + companionData.people.length + ' acompañante(s). Te esperamos 💛'
+            : '¡Gracias! Tu asistencia ha sido confirmada. Te esperamos 💛';
+          confirmedMsg.classList.add('show');
+        } else {
+          btnConfirm.disabled = false;
+          confirmBtnText.textContent = 'Confirmar asistencia';
+          sendErrorEl.textContent = 'Ocurrió un error al guardar. Intenta de nuevo.';
+        }
+      })
+      .catch(function(err){
+        console.error(err);
+        btnConfirm.classList.remove('sending');
+        btnConfirm.disabled = false;
+        confirmBtnText.textContent = 'Confirmar asistencia';
+        sendErrorEl.textContent = 'Error al conectar. Verifica tu conexión e intenta de nuevo.';
+      });
   });
 })();
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Google Sheets</title>
+</head>
+<body>
+
+    <h2>Formulario de prueba</h2>
+
+    <form id="formulario">
+        <input type="text" id="nombre" placeholder="Nombre"><br><br>
+
+        <input type="email" id="correo" placeholder="Correo"><br><br>
+
+        <input type="text" id="telefono" placeholder="Teléfono"><br><br>
+
+        <textarea id="mensaje" placeholder="Mensaje"></textarea><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+<script>
+
+const URL = "https://script.google.com/macros/s/AKfycbyVfN142OMIqshvOutVcNyiFhxWXwfJQH6EvbfD6hTjFU9AGdWXIQinHcsiZVSLlP8-xA/exec";
+
+const formulario = document.getElementById("formulario");
+
+formulario.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const datos = new URLSearchParams();
+
+    datos.append("nombre", document.getElementById("nombre").value);
+    datos.append("correo", document.getElementById("correo").value);
+    datos.append("telefono", document.getElementById("telefono").value);
+    datos.append("mensaje", document.getElementById("mensaje").value);
+
+    try{
+
+        const respuesta = await fetch(URL,{
+            method:"POST",
+            body: datos
+        });
+
+        const texto = await respuesta.text();
+
+        if(texto === "OK"){
+            alert("Registro guardado correctamente.");
+            formulario.reset();
+        }else{
+            alert("Ocurrió un error.");
+        }
+
+    }catch(error){
+        console.error(error);
+        alert("Error al conectar con Google Sheets.");
+    }
+
+});
+
+</script>
+
+</body>
+</html>
