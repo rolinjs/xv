@@ -2419,21 +2419,26 @@
   // de modo que el bloqueo se mantiene incluso si por alguna razón el reloj
   // del dispositivo cambiara momentáneamente hacia atrás.
   var RSVP_DEADLINE = new Date('2026-07-04T23:59:59');
-  var RSVP_DEADLINE_STORAGE_KEY = 'xv_ethel_rsvp_deadline_passed';
+  // var RSVP_DEADLINE_STORAGE_KEY = 'xv_ethel_rsvp_deadline_passed';
 
   function isRsvpDeadlinePassed(){
     var now = new Date();
-    if (now > RSVP_DEADLINE){
-      try{ localStorage.setItem(RSVP_DEADLINE_STORAGE_KEY, '1'); } catch(e){ /* silencioso */ }
-      return true;
-    }
-    try{
-      if (localStorage.getItem(RSVP_DEADLINE_STORAGE_KEY) === '1'){
-        return true;
-      }
-    } catch(e){ /* localStorage no disponible: se ignora silenciosamente */ }
-    return false;
+    return now > RSVP_DEADLINE;
   }
+
+  // function isRsvpDeadlinePassed(){
+  //   var now = new Date();
+  //   if (now > RSVP_DEADLINE){
+  //     try{ localStorage.setItem(RSVP_DEADLINE_STORAGE_KEY, '1'); } catch(e){ /* silencioso */ }
+  //     return true;
+  //   }
+  //   try{
+  //     if (localStorage.getItem(RSVP_DEADLINE_STORAGE_KEY) === '1'){
+  //       return true;
+  //     }
+  //   } catch(e){ /* localStorage no disponible: se ignora silenciosamente */ }
+  //   return false;
+  // }
 
   var btnOpen        = document.getElementById('btn-rsvp-open');
   var panel          = document.getElementById('rsvp-panel');
