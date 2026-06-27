@@ -2066,48 +2066,96 @@
     <button class="btn-wishlist" id="btn-wishlist" type="button" aria-expanded="false" aria-controls="wishlist-panel">Mi Wish List</button>
 
     <div class="wishlist-panel" id="wishlist-panel">
-      <div class="wishlist-inner">
-        <h3>Mi lista de regalos</h3>
-        <ul class="wishlist-list" id="wishlist-list">
-          <li><span class="ico">🎁</span><span>Sobre con efectivo</span></li>
+  <div class="wishlist-inner">
+    <h3>Mi lista de regalos</h3>
 
-          <li class="wishlist-bank-item">
-            <div class="bank-card">
-              <div class="bank-card-head">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4" stroke-linecap="round"/></svg>
-                <span class="bank-card-bank">TRANSFERENCIA BANCARIA</span>
-              </div>
+    <ul class="wishlist-list" id="wishlist-list">
 
-              <div class="bank-field">
-                <p class="bank-field-label">BCP Soles</p>
-                <div class="bank-field-row">
-                  <span class="bank-field-number" id="bank-account-number">475-17704908-0-03</span>
-                  <button class="bank-copy-btn" type="button" data-copy-target="bank-account-number" aria-label="Copiar número de cuenta">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                  </button>
-                </div>
-              </div>
+      <!-- Primero la transferencia bancaria -->
+      <li class="wishlist-bank-item">
+        <div class="bank-card">
+          <div class="bank-card-head">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="6" width="20" height="13" rx="2"/>
+              <path d="M2 10h20M6 15h4" stroke-linecap="round"/>
+            </svg>
+            <span class="bank-card-bank">TRANSFERENCIA BANCARIA</span>
+          </div>
 
-              <div class="bank-field">
-                <p class="bank-field-label">CCI BCP Soles</p>
-                <div class="bank-field-row">
-                  <span class="bank-field-number" id="bank-cci-number">00247511770490800324</span>
-                  <button class="bank-copy-btn" type="button" data-copy-target="bank-cci-number" aria-label="Copiar número CCI">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                  </button>
-                </div>
-                <p class="bank-field-label" style="margin-top:0.5rem;">Titular: Manuel Cevallos</p>
-              </div>
+          <div class="bank-field">
+            <p class="bank-field-label">BCP Soles</p>
+            <div class="bank-field-row">
+              <span class="bank-field-number" id="bank-account-number">475-17704908-0-03</span>
+
+              <button class="bank-copy-btn" type="button"
+                data-copy-target="bank-account-number"
+                aria-label="Copiar número de cuenta">
+
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="11" height="11" rx="1.5"/>
+                  <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+                </svg>
+
+              </button>
             </div>
-          </li>
+          </div>
 
-          <li><span class="ico">💄</span><span>Perfume / Maquillaje</span></li>
-          <li><span class="ico">👜</span><span>Cartera o accesorios</span></li>
-          <li><span class="ico">📱</span><span>Tarjeta de regalo (Gif Card)</span></li>
-          <li><span class="ico">✨</span><span>Sorpréndeme</span></li>
-        </ul>
-      </div>
-    </div>
+          <div class="bank-field">
+            <p class="bank-field-label">CCI BCP Soles</p>
+
+            <div class="bank-field-row">
+              <span class="bank-field-number" id="bank-cci-number">00247511770490800324</span>
+
+              <button class="bank-copy-btn" type="button"
+                data-copy-target="bank-cci-number"
+                aria-label="Copiar número CCI">
+
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="11" height="11" rx="1.5"/>
+                  <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+                </svg>
+
+              </button>
+            </div>
+
+            <p class="bank-field-label" style="margin-top:0.5rem;">
+              Titular: Manuel Cevallos
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- Luego el sobre -->
+      <li>
+        <span class="ico">🎁</span>
+        <span>Sobre con efectivo</span>
+      </li>
+
+      <li>
+        <span class="ico">💄</span>
+        <span>Perfume / Maquillaje</span>
+      </li>
+
+      <li>
+        <span class="ico">👜</span>
+        <span>Cartera o accesorios</span>
+      </li>
+
+      <li>
+        <span class="ico">📱</span>
+        <span>Tarjeta de regalo (Gift Card)</span>
+      </li>
+
+      <li>
+        <span class="ico">✨</span>
+        <span>Sorpréndeme</span>
+      </li>
+
+    </ul>
+  </div>
+</div>
     </div>
   </section>
 
