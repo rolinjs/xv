@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 <style>
   :root{
     --cream-light: #fdf8ec;
@@ -1733,6 +1735,19 @@
   @media (min-width: 1200px){
     .invite{ max-width: 1280px; margin: 0 auto; box-shadow: 0 0 80px rgba(0,0,0,0.12); }
   }
+  .rsvp-text{
+    text-align:center;
+    line-height:1.7;
+    color:#666;
+}
+
+.rsvp-deadline{
+    display:block;
+    margin-top:10px;
+    color:#b8860b; /* dorado elegante */
+    font-size:0.95rem;
+    font-weight:600;
+}
 </style>
 </head>
 <body>
@@ -1743,7 +1758,7 @@
   <section class="hero">
     <h1 class="hero-roman">XV</h1>
     <p class="hero-sub">ESTÁS INVITADO<br>A FESTEJAR MI QUINCEAÑERO</p>
-    <h2 class="hero-name">Ethel Melany</h2>
+    <h2 class="hero-name">Ethel Melanie</h2>
     <p class="hero-date">18.07.2026<br><small>19HS</small></p>
 
     <div class="countdown-wrap">
@@ -1905,7 +1920,7 @@
       <path d="M8 9h8M8 12.5h5" stroke-linecap="round"/>
     </svg>
     <h2 class="rsvp-title">Confirma tu asistencia</h2>
-    <p class="rsvp-text">Ingresa el número de celular con el que recibiste tu invitación y confírmanos que nos acompañarás en esta noche tan especial.</p>
+    <p class="rsvp-text"> Ingresa el número de celular con el que recibiste tu invitación y <strong>confírmanos que nos acompañarás en esta noche tan especial.</strong> <br><br> <span class="rsvp-deadline"> ⏳ <strong>Fecha límite para confirmar tu asistencia: 4 de julio.</strong> </span> </p>
 
     <button class="btn-rsvp-cta" id="btn-rsvp-open" type="button" aria-expanded="false" aria-controls="rsvp-panel">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.1 15.1 0 0 1-6.59-6.59l2.2-2.2c.27-.27.35-.67.24-1.02A11.4 11.4 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.39 7.61 17 17 17a1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
@@ -1918,12 +1933,12 @@
 
         <!-- STAGE 1: formulario de teléfono -->
         <div class="rsvp-stage active" id="stage-form">
-          <p class="rsvp-label">Tu número de celular</p>
+          <p class="rsvp-label">Ingresa tu número de celular para buscar tu reservación</p>
           <div class="rsvp-input-row" id="rsvp-input-row">
             <span class="prefix">+51</span>
             <input type="tel" id="rsvp-phone" inputmode="numeric" autocomplete="tel-national" placeholder="987 654 321" maxlength="11">
             <button class="btn-rsvp-submit" id="btn-rsvp-submit" type="button" aria-label="Buscar reservación">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.1 15.1 0 0 1-6.59-6.59l2.2-2.2c.27-.27.35-.67.24-1.02A11.4 11.4 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.39 7.61 17 17 17a1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
+                <span class="material-icons">search</span>
             </button>
           </div>
           <p class="rsvp-error" id="rsvp-error"></p>
@@ -1998,6 +2013,16 @@
             <p class="rsvp-found-label">Ya registraste tu asistencia</p>
             <p class="rsvp-found-name" id="rsvp-already-name">—</p>
             <p class="rsvp-notfound-text" style="margin-top:0.8rem;">Tu reservación ya fue confirmada anteriormente desde este dispositivo. Si crees que esto es un error, contáctanos directamente.</p>
+          </div>
+        </div>
+
+        <!-- STAGE 6: plazo de confirmación vencido -->
+        <div class="rsvp-stage" id="stage-deadline">
+          <div class="rsvp-notfound">
+            <div class="rsvp-notfound-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5M12 16h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            </div>
+            <p class="rsvp-notfound-text">El plazo para confirmar tu asistencia venció el 4 de julio. Si crees que esto es un error, contáctanos directamente.</p>
           </div>
         </div>
 
@@ -2386,6 +2411,30 @@
   // ---- Endpoint de Google Sheets (Apps Script Web App) ----
   var SHEETS_URL = "https://script.google.com/macros/s/AKfycbwEQH2GgnVz6Ech8nQEeQYf9GPguf9P2aBEGpCmuxB8THiu6Nkys4QxBqYn01_QlLbBZw/exec";
 
+  // ---- Fecha límite para confirmar asistencia: 4 de julio, 11:59:59 pm ----
+  // Pasada esta fecha/hora, ya no se permite abrir el formulario ni registrar
+  // a nadie (ni titular ni acompañantes), aunque se recargue la página.
+  // Se usa localStorage como respaldo adicional: una vez detectado el
+  // vencimiento en este dispositivo, queda marcado de forma persistente,
+  // de modo que el bloqueo se mantiene incluso si por alguna razón el reloj
+  // del dispositivo cambiara momentáneamente hacia atrás.
+  var RSVP_DEADLINE = new Date('2026-07-04T23:59:59');
+  var RSVP_DEADLINE_STORAGE_KEY = 'xv_ethel_rsvp_deadline_passed';
+
+  function isRsvpDeadlinePassed(){
+    var now = new Date();
+    if (now > RSVP_DEADLINE){
+      try{ localStorage.setItem(RSVP_DEADLINE_STORAGE_KEY, '1'); } catch(e){ /* silencioso */ }
+      return true;
+    }
+    try{
+      if (localStorage.getItem(RSVP_DEADLINE_STORAGE_KEY) === '1'){
+        return true;
+      }
+    } catch(e){ /* localStorage no disponible: se ignora silenciosamente */ }
+    return false;
+  }
+
   var btnOpen        = document.getElementById('btn-rsvp-open');
   var panel          = document.getElementById('rsvp-panel');
 
@@ -2394,7 +2443,8 @@
   var stageResult    = document.getElementById('stage-result');
   var stageNotFound  = document.getElementById('stage-notfound');
   var stageAlready   = document.getElementById('stage-already');
-  var allStages      = [stageForm, stageLoading, stageResult, stageNotFound, stageAlready];
+  var stageDeadline  = document.getElementById('stage-deadline');
+  var allStages      = [stageForm, stageLoading, stageResult, stageNotFound, stageAlready, stageDeadline];
 
   var inputRow       = document.getElementById('rsvp-input-row');
   var phoneInput     = document.getElementById('rsvp-phone');
@@ -2473,6 +2523,16 @@
   }
 
   btnOpen.addEventListener('click', function(){
+    if (isRsvpDeadlinePassed()){
+      showStage(stageDeadline);
+      panel.classList.add('open');
+      btnOpen.setAttribute('aria-expanded', 'true');
+      setTimeout(function(){
+        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 280);
+      return;
+    }
+
     var isOpen = panel.classList.contains('open');
     if (!isOpen){
       openPanel();
@@ -2632,6 +2692,11 @@
   }
 
   function handleSearch(){
+    if (isRsvpDeadlinePassed()){
+      showStage(stageDeadline);
+      return;
+    }
+
     var raw = phoneInput.value.trim();
     var error = validatePhone(raw);
 
@@ -2778,6 +2843,11 @@
 
   btnConfirm.addEventListener('click', function(){
     if (btnConfirm.disabled) return;
+
+    if (isRsvpDeadlinePassed()){
+      showStage(stageDeadline);
+      return;
+    }
 
     var titularDni = titularDniInput ? titularDniInput.value.trim() : '';
     var titularDniOk = isValidDni(titularDni);
