@@ -2,5 +2,6 @@
   { "id": "g46", "name": "Silver Silupú Chininín", "phone": "975184128", "passes": 2, "confirmado": false, "estado": 1 },
   { "id": "g47", "name": "Duver Arévalo Chininín", "phone": "968468816", "passes": 3, "confirmado": false, "estado": 1 },
   { "id": "g48", "name": "Wilmer Flores Flores", "phone": "966903624", "passes": 2, "confirmado": false, "estado": 1 },
-  { "id": "g49", "name": "Williams Gil Berrú", "phone": "950973887", "passes": 3, "confirmado": false, "estado": 1 }
+  { "id": "g49", "name": "Williams Gil Berrú", "phone": "950973887", "passes": 3, "confirmado": false, "estado": 1 },
+  { "id": "g50", "name": "Jorge Álvarez Gonzaga", "phone": "988694644", "passes": 3, "confirmado": false, "estado": 1 }
 ]
